@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Faza Haya Laila Anwari</title>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+            playfair: ['Playfair Display', 'serif']
+          },
+          animation: {
+            'spin-slow': 'spin 8s linear infinite',
+            fadeIn: 'fadeIn 1.3s ease-in-out',
+            zoomIn: 'zoomIn 1.5s ease-in-out',
+            fadeInUp: 'fadeInUp 1.5s ease-in-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            },
+            zoomIn: {
+              '0%': { opacity: '0', transform: 'scale(0.5)' },
+              '100%': { opacity: '1', transform: 'scale(1)' }
+            },
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(50px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-pink-100 to-purple-100 dark:from-gray-900 dark:to-gray-800 text-purple-800 dark:text-purple-100 transition duration-300">
+
+  <!-- Toggle Mode -->
+  <div class="fixed top-5 right-5 z-50">
+    <button id="modeToggle" class="bg-white dark:bg-gray-700 border border-purple-300 dark:border-gray-600 text-purple-800 dark:text-purple-100 px-4 py-2 rounded-full shadow hover:shadow-lg transition">
+      🌙 Dark Mode
+    </button>
+  </div>
+
+  <!-- Hero Section -->
+<section class="relative w-full px-6 md:px-20 py-20 bg-gradient-to-br from-pink-100 via-purple-100 to-white dark:from-gray-900 dark:via-purple-900 dark:to-gray-800 animate-fadeInUp overflow-hidden">
+  <!-- Background Blobs -->
+  <div class="absolute top-[-80px] left-[-80px] w-96 h-96 bg-pink-300 opacity-30 rounded-full filter blur-3xl animate-pulse z-0"></div>
+  <div class="absolute bottom-[-100px] right-[-100px] w-96 h-96 bg-purple-300 opacity-30 rounded-full filter blur-3xl animate-pulse z-0"></div>
+
+  <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
+    <!-- Text Content -->
+    <div class="max-w-xl text-center md:text-left">
+      <span class="inline-block mb-4 px-5 py-1.5 text-sm rounded-full bg-white text-purple-600 font-semibold dark:bg-gray-700 dark:text-purple-200 shadow-md animate-bounce">
+        Open to Collaboration ♡
+      </span>
+      <h1 class="text-5xl md:text-6xl font-extrabold font-playfair text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 leading-tight mb-4 animate-slideInDown">
+        Hi, I'm <span class="underline decoration-wavy decoration-pink-400">Faza Haya Laila Anwari</span> 👋
+      </h1>
+      <p class="text-lg md:text-xl font-medium text-purple-700 dark:text-purple-200 mb-8 leading-relaxed animate-fadeIn delay-200">
+        Pelajar PPLG | Web Developer | Creative Thinker ✨
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+        <a href="#proyek" class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-full font-semibold shadow-lg transform hover:-translate-y-1 transition duration-300">
+          🚀 Lihat Proyek
+        </a>
+        <a href="img/CV-FAZAHAYA.pdf" class="flex items-center justify-center gap-2 bg-white hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 text-purple-700 dark:text-purple-200 px-6 py-3 rounded-full font-semibold shadow-md hover:shadow-lg transform hover:scale-105 transition duration-300">
+          <i data-lucide="download" class="w-5 h-5"></i> Lihat CV
+        </a>
+      </div>
+    </div>
+
+    <!-- Image -->
+    <div class="relative group">
+      <img src="img/Saya1.png" alt="Foto Faza" class="w-48 md:w-60 rounded-2xl shadow-xl transform transition duration-500 group-hover:rotate-2 group-hover:scale-105" />
+      <div class="absolute -inset-2 bg-pink-400 opacity-20 rounded-2xl blur-2xl z-[-1] group-hover:opacity-40 transition duration-500"></div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Tentang Saya -->
+  <section class="w-full px-6 md:px-16 pb-20 animate-fadeInUp">
+  <h2 class="text-3xl font-bold mb-10 text-center text-purple-800 dark:text-purple-200">Tentang Saya</h2>
+  <div class="flex flex-col md:flex-row items-start gap-10">
+    <img src="img/Laut.png" class="w-44 h-56 object-cover rounded-2xl shadow-lg dark:bg-gray-700 transition hover:scale-105 duration-300" />
+    <div class="text-base text-purple-800 dark:text-purple-200 space-y-4">
+      <ul class="font-medium space-y-1">
+        <li><strong>Nama:</strong> Faza Haya Laila Anwari</li>
+        <li><strong>Umur:</strong> 17</li>
+        <li><strong>Kota:</strong> Bogor</li>
+        <li><strong>Status:</strong> Pelajar</li>
+      </ul>
+      <p>
+        Halo! Saya Faza, pelajar jurusan PPLG yang antusias dengan dunia pengembangan web. Saya percaya setiap baris kode punya potensi menciptakan perubahan nyata. Saat ini saya aktif mempelajari front-end dan back-end teknologi untuk memperluas wawasan sebagai calon software engineer.
+      </p>
+      <ul class="list-disc list-inside space-y-2">
+        <li>🎬 Suka nonton film & musik untuk recharge ide kreatif</li>
+        <li>❤️ Tertarik pada teknologi & ilustrasi digital</li>
+        <li>💡 Senang tantangan baru & tumbuh lewat proses</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Skills -->
+    <section class="w-full px-6 md:px-16 pb-20 animate-fadeInUp">
+      <h2 class="text-3xl font-bold mb-10 text-center">Keahlian Saya</h2>
+      <div class="flex flex-wrap justify-center gap-12 text-purple-700 dark:text-purple-300 text-[70px] md:text-[90px]">
+        <i class="devicon-html5-plain colored animate-bounce"></i>
+        <i class="devicon-css3-plain colored animate-pulse"></i>
+        <i class="devicon-php-plain colored animate-spin-slow"></i>
+        <i class="devicon-laravel-plain text-[#ff2d20] animate-bounce"></i>
+        <i class="devicon-figma-plain colored animate-pulse"></i>
+        <img src="https://cdn.simpleicons.org/diagramsdotnet/FF9900" alt="Draw.io" class="w-[70px] md:w-[90px] animate-spin-slow" />
+        <i class="devicon-github-original colored animate-bounce"></i>
+      </div>
+    </section>
+
+  <!-- Project Highlights Section -->
+<section id="proyek" class="w-full px-6 md:px-16 pb-20 animate-fadeInUp">
+  <h2 class="text-3xl font-bold mb-10 text-center text-purple-800 dark:text-purple-200">Proyek</h2>
+  <div class="grid md:grid-cols-2 gap-8">
+    <!-- Proyek Card -->
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition">
+      <img src="img/BangbaraPOS.jpg" class="rounded-lg mb-4" alt="BangbaraPOS">
+      <h3 class="text-xl font-semibold mb-2">BangbaraPOS</h3>
+      <p class="text-purple-700 dark:text-purple-300 text-sm mb-3">
+        Aplikasi pemesanan makanan untuk Resto Bangbara Steak berbasis Laravel & Tailwind.
+      </p>
+      <a href="bangbarapos.html" class="text-pink-500 dark:text-pink-300 font-medium hover:underline">Lihat Detail →</a>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition">
+      <img src="img/G30SCHRONICLE.jpg" class="rounded-lg mb-4" alt="G30SCHRONICLE">
+      <h3 class="text-xl font-semibold mb-2">G30SCHRONICLE</h3>
+      <p class="text-purple-700 dark:text-purple-300 text-sm mb-3">
+        Web edukatif berisi sejarah G30S/PKI lengkap dengan video, kuis, dan fitur AI.
+      </p>
+      <a href="g30schronicle.html" class="text-pink-500 dark:text-pink-300 font-medium hover:underline">Lihat Detail →</a>
+    </div>
+  </div>
+</section>
+
+
+<!--Certificate Section-->
+
+<section class="w-full px-6 md:px-16 pb-20 animate-fadeInUp">
+  <h2 class="text-3xl font-bold mb-10 text-center">Sertifikat</h2>
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+      <h3 class="text-xl font-semibold mb-2">Belajar Dasar Pemrograman Web</h3>
+      <p class="text-purple-700 dark:text-purple-300">Dicoding Indonesia - 2024</p>
+    </div>
+    <!-- Tambahkan lagi sesuai kebutuhan -->
+  </div>
+</section>
+
+
+
+  <!-- Footer Section -->
+<footer id="contact" class="bg-gradient-to-tr from-pink-500 via-purple-600 to-indigo-700 text-white px-8 py-16">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+    
+    <!-- Left Text -->
+    <div>
+      <h2 class="text-3xl font-bold mb-4">Ingin bekerja sama?</h2>
+      <p class="text-lg">Kirimkan saya pesan dan mari kita ciptakan sesuatu yang menakjubkan!</p>
+    </div>
+
+    <!-- Form -->
+    <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 text-gray-800 dark:text-white">
+      <form id="contactForm" class="space-y-5">
+        
+        <!-- Nama -->
+        <div class="relative">
+          <i class="fas fa-user absolute left-3 top-1/2 transform -translate-y-1/2 text-pink-500"></i>
+          <input type="text" id="name" name="name" placeholder="Nama kamu..." required
+            class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400 dark:bg-gray-800" />
+        </div>
+
+        <!-- Email -->
+        <div class="relative">
+          <i class="fas fa-envelope absolute left-3 top-1/2 transform -translate-y-1/2 text-pink-500"></i>
+          <input type="email" id="email" name="email" placeholder="Email kamu..." required
+            class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400 dark:bg-gray-800" />
+        </div>
+
+        <!-- Subject -->
+        <div class="relative">
+          <i class="fas fa-tag absolute left-3 top-1/2 transform -translate-y-1/2 text-pink-500"></i>
+          <input type="text" id="subject" name="subject" placeholder="Subject" required
+            class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400 dark:bg-gray-800" />
+        </div>
+
+        <!-- Message -->
+        <div class="relative">
+          <i class="fas fa-comment-dots absolute left-3 top-5 text-pink-500"></i>
+          <textarea id="message" name="message" placeholder="Pesan mu..." rows="5" required
+            class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400 dark:bg-gray-800"></textarea>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="submit-btn w-full py-3 rounded-xl bg-pink-500 hover:bg-pink-600 text-white font-semibold transition">
+          <i class="fas fa-paper-plane mr-2"></i> Kirim Pesan
+        </button>
+      </form>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

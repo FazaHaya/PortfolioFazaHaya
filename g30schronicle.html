@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>G30SCHRONICLE | Detail Proyek</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+            playfair: ['Playfair Display', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-red-100 to-yellow-100 dark:from-gray-900 dark:to-gray-800 text-red-900 dark:text-yellow-100 transition duration-300">
+
+  <!-- Tombol kembali -->
+  <div class="p-6" data-aos="fade-down">
+    <a href="index.html" class="text-sm text-red-600 dark:text-yellow-300 hover:underline">← Kembali ke Beranda</a>
+  </div>
+
+  <!-- Tombol Toggle Dark/Light Mode -->
+  <div class="absolute top-6 right-6 z-10" data-aos="fade-down">
+    <button id="darkModeToggle" class="flex items-center gap-2 bg-yellow-200 dark:bg-yellow-600 text-red-900 dark:text-yellow-100 px-4 py-2 rounded-full text-sm font-medium shadow hover:shadow-md transition">
+      <span id="modeIcon">🌞</span>
+      <span id="modeLabel">Light Mode</span>
+    </button>
+  </div>
+
+  <!-- Detail Proyek -->
+  <section class="px-6 md:px-20 pb-20 space-y-10">
+    <div class="text-center mb-10" data-aos="fade-up">
+      <h1 class="text-4xl font-bold font-playfair bg-gradient-to-r from-red-600 to-yellow-500 text-transparent bg-clip-text mb-2">G30SCHRONICLE</h1>
+      <p class="text-red-700 dark:text-yellow-300 max-w-2xl mx-auto">Aplikasi edukasi interaktif seputar sejarah G30S/PKI dengan fitur sejarah, video dokumenter, kuis interaktif, tanya AI, dan chat box antar pengguna.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-10 items-start">
+      <img src="img/G30SCHRONICLE.jpg" alt="Tampilan G30SCHRONICLE" class="rounded-xl shadow-lg dark:bg-gray-700 transform hover:scale-105 transition duration-500" data-aos="zoom-in">
+
+      <div class="space-y-6 text-base leading-relaxed" data-aos="fade-left">
+        <div>
+          <h2 class="text-2xl font-semibold">📜 Latar Belakang</h2>
+          <p>G30SCHRONICLE dikembangkan untuk memperkenalkan sejarah G30S/PKI dengan pendekatan digital yang menarik dan interaktif. Aplikasi ini menjadi sarana edukasi yang relevan untuk generasi muda agar tidak melupakan sejarah kelam bangsa.</p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-semibold mt-6">🔍 Fitur Unggulan</h2>
+          <ul class="list-disc list-inside space-y-1">
+            <li>📖 Halaman Sejarah Lengkap G30S/PKI</li>
+            <li>🎥 Video Dokumenter dan Narasi</li>
+            <li>🧠 Kuis Interaktif Seputar Materi</li>
+            <li>💬 Chat Box Edukasi untuk Diskusi</li>
+            <li>🤖 Fitur Tanya AI terkait G30S/PKI</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-semibold mt-6">🛠️ Teknologi yang Digunakan</h2>
+          <ul class="list-disc list-inside space-y-1">
+            <li>🌐 Laravel + Blade</li>
+            <li>🎨 Tailwind CSS</li>
+            <li>🤖 OpenAI API untuk Tanya AI</li>
+            <li>🗄️ MySQL</li>
+          </ul>
+        </div>
+
+        <div class="mt-6" data-aos="fade-up">
+          <a href="https://github.com/FazaHaya/G30SPKI" class="inline-block bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-full font-semibold shadow hover:shadow-lg transition">🔗 Lihat Proyek</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+      duration: 1000,
+      easing: 'ease-out-cubic'
+    });
+  </script>
+
+  <!-- Dark Mode Toggle Script -->
+  <script>
+    const toggle = document.getElementById('darkModeToggle');
+    const html = document.documentElement;
+    const icon = document.getElementById('modeIcon');
+    const label = document.getElementById('modeLabel');
+
+    function setMode(mode) {
+      if (mode === 'dark') {
+        html.classList.add('dark');
+        icon.textContent = '🌙';
+        label.textContent = 'Dark Mode';
+        localStorage.theme = 'dark';
+      } else {
+        html.classList.remove('dark');
+        icon.textContent = '🌞';
+        label.textContent = 'Light Mode';
+        localStorage.theme = 'light';
+      }
+    }
+
+    // Atur mode awal
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      setMode('dark');
+    } else {
+      setMode('light');
+    }
+
+    toggle.addEventListener('click', () => {
+      const isDark = html.classList.contains('dark');
+      setMode(isDark ? 'light' : 'dark');
+    });
+  </script>
+
+</body>
+</html>
