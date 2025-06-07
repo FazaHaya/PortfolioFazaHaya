@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
 
-
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -444,7 +443,7 @@
             <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 hover:shadow-xl transition"
                 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
                 <img src="img/certif/Belajar Dasar Pemrograman.png" class="rounded-lg mb-2" alt="Sertifikat Baru" />
-                <h3 class="text-lg font-semibold mb-1">Belajar Dasar Pemrograman Javascript/h3>
+                <h3 class="text-lg font-semibold mb-1">Belajar Dasar Pemrograman Javascript</h3>
                 <p class="text-purple-700 dark:text-purple-300 text-sm mb-2">
                     Sertifikat kelulusan Dicoding - 2025
                 </p>
@@ -476,7 +475,7 @@
                     class="text-pink-500 dark:text-pink-300 font-medium hover:underline text-sm">Lihat
                     Sertifikat →</a>
             </div>
-            </div>
+        </div>
     </section>
 
     <footer id="contact"
@@ -493,22 +492,22 @@
 
             <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 text-gray-800 dark:text-white"
                 data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">
-                <form id="contact-form" class="space-y-5">
+                <form id="contact-form" class="space-y-5" netlify>
                     <div class="relative">
                         <i class="fas fa-user absolute left-3 top-1/2 transform -translate-y-1/2 text-pink-500"></i>
-                        <input type="text" name="name" placeholder="Nama kamu..." required
+                        <input type="text" name="from_name" id="name" placeholder="Nama kamu..." required
                             class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400 dark:bg-gray-800" />
                     </div>
 
                     <div class="relative">
                         <i class="fas fa-envelope absolute left-3 top-1/2 transform -translate-y-1/2 text-pink-500"></i>
-                        <input type="email" name="email" placeholder="Email kamu..." required
+                        <input type="email" name="from_email" id="email" placeholder="Email kamu..." required
                             class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400 dark:bg-gray-800" />
                     </div>
 
                     <div class="relative">
                         <i class="fas fa-comment-dots absolute left-3 top-5 text-pink-500"></i>
-                        <textarea name="message" placeholder="Pesan mu..." rows="5" required
+                        <textarea name="message" id="message" placeholder="Pesan mu..." rows="5" required
                             class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400 dark:bg-gray-800"></textarea>
                     </div>
 
@@ -522,107 +521,93 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script>
         AOS.init({
-            duration: 1000,
-            once: true,
+            once: true, // Animasi hanya berjalan sekali
+            duration: 1200, // Durasi animasi
         });
-
-        // Toggle Mobile Menu
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        if (menuToggle && mobileMenu) { // Pastikan elemen ada
-            menuToggle.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-                menuToggle.classList.toggle('open');
-            });
-        }
-
-        // Dark Mode Toggle Logic
-        // Menggunakan dua ID terpisah untuk tombol (desktop dan mobile)
-        const modeToggleDesktop = document.getElementById('modeToggleDesktop');
-        const modeToggleMobile = document.getElementById('modeToggleMobile');
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script src="script.js"></script>
+    
+    <script>
+        // --- Script Toggle Dark Mode + Simpan ke localStorage ---
+        const html = document.documentElement;
+        const toggleBtnDesktop = document.getElementById('modeToggleDesktop');
+        const toggleBtnMobile = document.getElementById('modeToggleMobile');
 
         function updateModeToggleButtonText(isDarkMode) {
             const text = isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
-            if (modeToggleDesktop) {
-                modeToggleDesktop.innerHTML = text;
+            if (toggleBtnDesktop) {
+                toggleBtnDesktop.innerHTML = text;
             }
-            if (modeToggleMobile) {
-                modeToggleMobile.innerHTML = text;
+            if (toggleBtnMobile) {
+                toggleBtnMobile.innerHTML = text;
             }
         }
 
         function toggleDarkMode() {
-            document.documentElement.classList.toggle('dark');
-            const isDarkMode = document.documentElement.classList.contains('dark');
+            html.classList.toggle('dark');
+            const isDarkMode = html.classList.contains('dark');
             localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
             updateModeToggleButtonText(isDarkMode);
         }
 
         // Event listener untuk tombol desktop
-        if (modeToggleDesktop) {
-            modeToggleDesktop.addEventListener('click', toggleDarkMode);
+        if (toggleBtnDesktop) {
+            toggleBtnDesktop.addEventListener('click', toggleDarkMode);
         }
 
         // Event listener untuk tombol mobile
-        if (modeToggleMobile) {
-            modeToggleMobile.addEventListener('click', toggleDarkMode);
+        if (toggleBtnMobile) {
+            toggleBtnMobile.addEventListener('click', toggleDarkMode);
         }
 
         // Inisialisasi Dark Mode saat halaman dimuat
-        const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        (function initDarkMode() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-            document.documentElement.classList.add('dark');
-            updateModeToggleButtonText(true);
-        } else {
-            document.documentElement.classList.remove('dark');
-            updateModeToggleButtonText(false);
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                html.classList.add('dark');
+                updateModeToggleButtonText(true);
+            } else {
+                html.classList.remove('dark');
+                updateModeToggleButtonText(false);
+            }
+        })();
+
+
+        // --- Logika Hamburger Menu ---
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuToggle.classList.toggle('open');
+            });
+
+            // Menutup menu mobile saat link diklik (opsional, tapi bagus untuk UX)
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuToggle.classList.remove('open');
+                });
+            });
         }
 
-
-        // Close mobile menu and reset icon on resize
+        // Tutup menu mobile dan reset ikon saat resize ke desktop
         window.addEventListener('resize', () => {
             if (window.innerWidth >= 768) { // Sesuai breakpoint md Tailwind CSS
-                mobileMenu.classList.add('hidden');
-                menuToggle.classList.remove('open');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+                if (menuToggle.classList.contains('open')) {
+                    menuToggle.classList.remove('open');
+                }
             }
         });
-
-        // EmailJS Integration
-        // Ganti dengan User ID, Service ID, dan Template ID EmailJS Anda
-        // Daftar di https://www.emailjs.com/ untuk mendapatkan ID ini
-        const EMAILJS_USER_ID = "YOUR_EMAILJS_USER_ID"; // Ganti ini
-        const EMAILJS_SERVICE_ID = "YOUR_EMAILJS_SERVICE_ID"; // Ganti ini
-        const EMAILJS_TEMPLATE_ID = "YOUR_EMAILJS_TEMPLATE_ID"; // Ganti ini
-
-        if (EMAILJS_USER_ID && EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID) {
-            emailjs.init(EMAILJS_USER_ID);
-
-            document.getElementById('contact-form').addEventListener('submit', function (event) {
-                event.preventDefault(); // Mencegah form dari reload halaman
-
-                emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this)
-                    .then(() => {
-                        alert('Pesan Anda berhasil terkirim!');
-                        this.reset(); // Reset form setelah sukses
-                    }, (error) => {
-                        alert('Gagal mengirim pesan. Silakan coba lagi nanti.');
-                        console.error('EmailJS Error:', error);
-                    });
-            });
-        } else {
-            console.warn("EmailJS IDs not configured. Contact form will not send emails.");
-            // Nonaktifkan tombol submit atau tampilkan pesan jika ID tidak diatur
-            const submitBtn = document.querySelector('#contact-form .submit-btn');
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Form tidak aktif (konfigurasi EmailJS)';
-            }
-        }
     </script>
 </body>
 
