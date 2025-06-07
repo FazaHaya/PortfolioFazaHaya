@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portofolio Faza Haya Laila Anwari - Pelajar PPLG dan Web Developer pemula yang kreatif dengan proyek Laravel, Tailwind, dan teknologi web lainnya." />
+    <title>Portofolio Faza</title>
+    <link href="style.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#2563eb",
+              dark: "#0f172a",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-white font-sans">
+
+    <!-- Navbar -->
+    <header class="bg-white dark:bg-gray-800 shadow fixed top-0 w-full z-50">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+        <h1 class="text-xl font-bold">Faza.</h1>
+        <nav class="hidden md:flex space-x-6">
+          <a href="#about" class="hover:text-primary">Tentang</a>
+          <a href="#skills" class="hover:text-primary">Skills</a>
+          <a href="#projects" class="hover:text-primary">Proyek</a>
+          <a href="#certificates" class="hover:text-primary">Sertifikat</a>
+        </nav>
+        <div class="flex items-center space-x-4">
+          <button id="modeToggle" class="text-xl">🌙</button>
+          <button id="menuToggle" class="md:hidden text-2xl">☰</button>
+        </div>
+      </div>
+      <nav id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-800 px-4 pb-4">
+        <a href="#about" class="block py-2">Tentang</a>
+        <a href="#skills" class="block py-2">Skills</a>
+        <a href="#projects" class="block py-2">Proyek</a>
+        <a href="#certificates" class="block py-2">Sertifikat</a>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="h-screen flex items-center justify-center bg-cover bg-center relative" style="background-image: url('img/bg.jpg');">
+      <div class="bg-white/20 dark:bg-gray-800/30 backdrop-blur-lg p-10 rounded-2xl text-center shadow-2xl max-w-xl mx-auto mt-24">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Halo, saya <span class="text-primary">Faza</span></h1>
+        <p class="text-lg">Pelajar PPLG | Web Developer Pemula</p>
+      </div>
+    </section>
+
+    <!-- Tentang Saya -->
+    <section id="about" class="py-20 px-4 bg-gray-50 dark:bg-gray-800">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-6">Tentang Saya</h2>
+        <p>Saya adalah seorang pelajar jurusan PPLG di SMK Wikrama Bogor. Saya tertarik pada pengembangan web, terutama menggunakan teknologi seperti HTML, CSS, JavaScript, Tailwind CSS, dan Laravel. Saya senang membangun antarmuka pengguna yang menarik dan responsif.</p>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="py-20 px-4 bg-white dark:bg-gray-900">
+      <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-10">Skills</h2>
+        <div class="slider-container overflow-hidden">
+          <div class="slider-track flex gap-10">
+            <div class="slide"><img src="img/html.png" alt="Logo HTML" class="h-16" /></div>
+            <div class="slide"><img src="img/css.png" alt="Logo CSS" class="h-16" /></div>
+            <div class="slide"><img src="img/js.png" alt="Logo JavaScript" class="h-16" /></div>
+            <div class="slide"><img src="img/tailwind.png" alt="Logo Tailwind CSS" class="h-16" /></div>
+            <div class="slide"><img src="img/php.png" alt="Logo PHP" class="h-16" /></div>
+            <div class="slide"><img src="img/laravel.png" alt="Logo Laravel" class="h-16" /></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proyek -->
+    <section id="projects" class="py-20 px-4 bg-gray-50 dark:bg-gray-800">
+      <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-10">Proyek</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Website Kasir</h3>
+            <p>Sebuah aplikasi kasir berbasis web menggunakan Laravel untuk membantu transaksi penjualan.</p>
+          </div>
+          <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Website Portofolio</h3>
+            <p>Portofolio pribadi yang dibangun menggunakan Tailwind CSS dan HTML.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sertifikat -->
+    <section id="certificates" class="py-20 px-4 bg-white dark:bg-gray-900">
+      <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-10">Sertifikat</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">Dasar Git & GitHub - Dicoding</div>
+          <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">Belajar Dasar Pemrograman Web - Dicoding</div>
+          <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">Menjadi Web Programmer - Infinite Learning</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-200 dark:bg-gray-800 py-6 text-center text-sm">
+      <p>© 2025 Faza Haya Laila Anwari. Dibuat dengan ❤️ dan Tailwind CSS.</p>
+    </footer>
+
+    <!-- Script -->
+    <script>
+      const menuToggle = document.getElementById("menuToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const modeToggle = document.getElementById("modeToggle");
+      const html = document.documentElement;
+
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      modeToggle.addEventListener("click", () => {
+        html.classList.toggle("dark");
+        modeToggle.textContent = html.classList.contains("dark") ? "☀️" : "🌙";
+      });
+    </script>
+  </body>
+</html>

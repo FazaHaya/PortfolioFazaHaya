@@ -1,233 +1,589 @@
 <!DOCTYPE html>
 <html lang="id" class="dark">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Faza Haya Laila Anwari</title>
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            inter: ['Inter', 'sans-serif'],
-            playfair: ['Playfair Display', 'serif']
-          },
-          animation: {
-            'spin-slow': 'spin 8s linear infinite',
-            fadeIn: 'fadeIn 1.3s ease-in-out',
-            zoomIn: 'zoomIn 1.5s ease-in-out',
-            fadeInUp: 'fadeInUp 1.5s ease-in-out',
-          },
-          keyframes: {
-            fadeIn: {
-              '0%': { opacity: '0', transform: 'translateY(30px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faza Haya Laila Anwari</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ["Inter", "sans-serif"],
+                        playfair: ["Playfair Display", "serif"],
+                    },
+                    colors: {
+                        primary: '#ec4899', // pink
+                        secondary: '#8b5cf6', // ungu
+                    },
+                    keyframes: {
+                        bounceIcon: {
+                            '0%, 100%': {
+                                transform: 'translateY(0)'
+                            },
+                            '50%': {
+                                transform: 'translateY(-10px)'
+                            },
+                        },
+                        spinSlow: {
+                            '0%': {
+                                transform: 'rotate(0deg)'
+                            },
+                            '100%': {
+                                transform: 'rotate(360deg)'
+                            },
+                        },
+                        pulseIcon: {
+                            '0%, 100%': {
+                                opacity: '1'
+                            },
+                            '50%': {
+                                opacity: '0.5'
+                            },
+                        },
+                    },
+                    animation: {
+                        'bounce-icon': 'bounceIcon 1s ease-in-out infinite',
+                        'spin-slow': 'spinSlow 3s linear infinite',
+                        'pulse-icon': 'pulseIcon 1s ease-in-out infinite',
+                    },
+                },
             },
-            zoomIn: {
-              '0%': { opacity: '0', transform: 'scale(0.5)' },
-              '100%': { opacity: '1', transform: 'scale(1)' }
-            },
-            fadeInUp: {
-              '0%': { opacity: '0', transform: 'translateY(50px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' }
-            }
-          }
+            plugins: [],
+        };
+    </script>
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+            scroll-behavior: smooth;
         }
-      }
-    }
-  </script>
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      scroll-behavior: smooth;
-    }
-  </style>
+
+        /* === Slider Logo Infinity === */
+        .slider-container {
+            width: 100%;
+            height: 100px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            mask-image: linear-gradient(to right,
+                    transparent 0%,
+                    black 15%,
+                    black 85%,
+                    transparent 100%);
+            -webkit-mask-image: linear-gradient(to right,
+                    transparent 0%,
+                    black 15%,
+                    black 85%,
+                    transparent 100%);
+        }
+
+        .slider-track {
+            display: flex;
+            width: max-content;
+            animation: scrollLogo 25s linear infinite;
+        }
+
+        @keyframes scrollLogo {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .slide {
+            flex: 0 0 auto;
+            width: 100px;
+            padding: 0.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            width: 100%;
+            max-height: 80px;
+            object-fit: contain;
+            filter: grayscale(1);
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+            filter: grayscale(0);
+        }
+
+        @media (min-width: 768px) {
+            .slide {
+                width: 120px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .slide {
+                width: 150px;
+            }
+        }
+
+        /* --- Hamburger Icon Animation --- */
+        .hamburger-line {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: currentColor;
+            border-radius: 9999px;
+            transition: all 0.3s ease-in-out;
+            position: absolute;
+            left: 0;
+        }
+
+        .hamburger-line.top-line {
+            top: 6px;
+        }
+
+        .hamburger-line.middle-line {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hamburger-line.bottom-line {
+            bottom: 6px;
+        }
+
+        /* State saat menu terbuka */
+        .dark #menuToggle.open .hamburger-line {
+            background-color: #f3e8ff;
+        }
+
+        #menuToggle.open .hamburger-line {
+            background-color: #8b5cf6;
+        }
+
+        #menuToggle.open .top-line {
+            transform: translateY(6px) rotate(45deg);
+        }
+
+        #menuToggle.open .middle-line {
+            opacity: 0;
+            transform: translateX(-15px);
+        }
+
+        #menuToggle.open .bottom-line {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+    </style>
 </head>
-<body class="bg-gradient-to-br from-pink-100 to-purple-100 dark:from-gray-900 dark:to-gray-800 text-purple-800 dark:text-purple-100 transition duration-300">
 
-  <!-- Toggle Mode -->
-  <div class="fixed top-5 right-5 z-50">
-    <button id="modeToggle" class="bg-white dark:bg-gray-700 border border-purple-300 dark:border-gray-600 text-purple-800 dark:text-purple-100 px-4 py-2 rounded-full shadow hover:shadow-lg transition">
-      🌙 Dark Mode
-    </button>
-  </div>
+<body
+    class="bg-gradient-to-b from-[#FADDE1] via-[#FCEFF2] to-[#FFFAE6] dark:from-[#1F2B57] dark:via-[#2C3E73] dark:to-[#3D4F91] text-gray-900 dark:text-white">
 
-  <!-- Hero Section -->
-<section class="relative w-full px-6 md:px-20 py-20 bg-gradient-to-br from-pink-100 via-purple-100 to-white dark:from-gray-900 dark:via-purple-900 dark:to-gray-800 animate-fadeInUp overflow-hidden">
-  <!-- Background Blobs -->
-  <div class="absolute top-[-80px] left-[-80px] w-96 h-96 bg-pink-300 opacity-30 rounded-full filter blur-3xl animate-pulse z-0"></div>
-  <div class="absolute bottom-[-100px] right-[-100px] w-96 h-96 bg-purple-300 opacity-30 rounded-full filter blur-3xl animate-pulse z-0"></div>
+    <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-pink-100/70 dark:bg-gray-900/70 shadow-xl border-b border-pink-200/50 dark:border-gray-800/50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 md:px-20 py-4 flex items-center justify-between relative">
+            <h1 class="text-xl md:text-2xl font-playfair font-bold text-purple-800 dark:text-purple-100">
+                Faza Haya
+            </h1>
+            <nav
+                class="space-x-6 text-sm md:text-base font-medium text-gray-700 dark:text-gray-300 hidden md:flex items-center">
+                <a href="#about" class="hover:text-pink-500 transition">Tentang</a>
+                <a href="#skill" class="hover:text-pink-500 transition">Keahlian</a>
+                <a href="#proyek" class="hover:text-pink-500 transition">Proyek</a>
+                <a href="#certificate" class="hover:text-pink-500 transition">Certificate</a>
+                <a href="#contact" class="hover:text-pink-500 transition">Contact</a>
+                <a href="img/CV_FazaHayaLailaAnwari.pdf" class="hover:text-pink-500 transition" target="_blank"
+                    rel="noopener noreferrer">CV</a>
+                <button id="modeToggleDesktop"
+                    class="ml-6 bg-white dark:bg-gray-700 border border-purple-300 dark:border-gray-600 text-purple-800 dark:text-purple-100 px-4 py-2 rounded-full shadow hover:shadow-lg transition">
+                    </button>
+            </nav>
 
-  <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
-    <!-- Text Content -->
-    <div class="max-w-xl text-center md:text-left">
-      <span class="inline-block mb-4 px-5 py-1.5 text-sm rounded-full bg-white text-purple-600 font-semibold dark:bg-gray-700 dark:text-purple-200 shadow-md animate-bounce">
-        Open to Collaboration ♡
-      </span>
-      <h1 class="text-5xl md:text-6xl font-extrabold font-playfair text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 leading-tight mb-4 animate-slideInDown">
-        Hi, I'm <span class="underline decoration-wavy decoration-pink-400">Faza Haya Laila Anwari</span> 👋
-      </h1>
-      <p class="text-lg md:text-xl font-medium text-purple-700 dark:text-purple-200 mb-8 leading-relaxed animate-fadeIn delay-200">
-        Pelajar PPLG | Web Developer | Creative Thinker ✨
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-        <a href="#proyek" class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-full font-semibold shadow-lg transform hover:-translate-y-1 transition duration-300">
-          🚀 Lihat Proyek
-        </a>
-        <a href="img/CV-FAZAHAYA.pdf" class="flex items-center justify-center gap-2 bg-white hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 text-purple-700 dark:text-purple-200 px-6 py-3 rounded-full font-semibold shadow-md hover:shadow-lg transform hover:scale-105 transition duration-300">
-          <i data-lucide="download" class="w-5 h-5"></i> Lihat CV
-        </a>
-      </div>
-    </div>
+            <div class="flex items-center gap-4 md:hidden">
+                <button id="modeToggleMobile"
+                    class="bg-white dark:bg-gray-700 border border-purple-300 dark:border-gray-600 text-purple-800 dark:text-purple-100 px-4 py-2 rounded-full shadow hover:shadow-lg transition z-50">
+                    </button>
+                <button id="menuToggle"
+                    class="text-gray-700 dark:text-gray-300 focus:outline-none relative w-6 h-6 flex flex-col justify-center items-center">
+                    <span class="hamburger-line top-line"></span>
+                    <span class="hamburger-line middle-line"></span>
+                    <span class="hamburger-line bottom-line"></span>
+                </button>
+            </div>
+        </div>
 
-    <!-- Image -->
-    <div class="relative group">
-      <img src="img/Saya1.png" alt="Foto Faza" class="w-48 md:w-60 rounded-2xl shadow-xl transform transition duration-500 group-hover:rotate-2 group-hover:scale-105" />
-      <div class="absolute -inset-2 bg-pink-400 opacity-20 rounded-2xl blur-2xl z-[-1] group-hover:opacity-40 transition duration-500"></div>
-    </div>
-  </div>
-</section>
+        <div id="mobileMenu" class="md:hidden hidden px-6 pb-4">
+            <a href="#about" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-pink-500">Tentang</a>
+            <a href="#skill" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-pink-500">Keahlian</a>
+            <a href="#proyek" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-pink-500">Proyek</a>
+            <a href="#certificate"
+                class="block py-2 text-gray-700 dark:text-gray-300 hover:text-pink-500">Certificate</a>
+            <a href="#contact" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-pink-500">Contact</a>
+            <a href="img/CV_FazaHayaLailaAnwari.pdf" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-pink-500"
+                target="_blank" rel="noopener noreferrer">CV</a>
+        </div>
+    </header>
 
-
-  <!-- Tentang Saya -->
-  <section class="w-full px-6 md:px-16 pb-20 animate-fadeInUp">
-  <h2 class="text-3xl font-bold mb-10 text-center text-purple-800 dark:text-purple-200">Tentang Saya</h2>
-  <div class="flex flex-col md:flex-row items-start gap-10">
-    <img src="img/Laut.png" class="w-44 h-56 object-cover rounded-2xl shadow-lg dark:bg-gray-700 transition hover:scale-105 duration-300" />
-    <div class="text-base text-purple-800 dark:text-purple-200 space-y-4">
-      <ul class="font-medium space-y-1">
-        <li><strong>Nama:</strong> Faza Haya Laila Anwari</li>
-        <li><strong>Umur:</strong> 17</li>
-        <li><strong>Kota:</strong> Bogor</li>
-        <li><strong>Status:</strong> Pelajar</li>
-      </ul>
-      <p>
-        Halo! Saya Faza, pelajar jurusan PPLG yang antusias dengan dunia pengembangan web. Saya percaya setiap baris kode punya potensi menciptakan perubahan nyata. Saat ini saya aktif mempelajari front-end dan back-end teknologi untuk memperluas wawasan sebagai calon software engineer.
-      </p>
-      <ul class="list-disc list-inside space-y-2">
-        <li>🎬 Suka nonton film & musik untuk recharge ide kreatif</li>
-        <li>❤️ Tertarik pada teknologi & ilustrasi digital</li>
-        <li>💡 Senang tantangan baru & tumbuh lewat proses</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-
-  <!-- Skills -->
-    <section class="w-full px-6 md:px-16 pb-20 animate-fadeInUp">
-      <h2 class="text-3xl font-bold mb-10 text-center">Keahlian Saya</h2>
-      <div class="flex flex-wrap justify-center gap-12 text-purple-700 dark:text-purple-300 text-[70px] md:text-[90px]">
-        <i class="devicon-html5-plain colored animate-bounce"></i>
-        <i class="devicon-css3-plain colored animate-pulse"></i>
-        <i class="devicon-php-plain colored animate-spin-slow"></i>
-        <i class="devicon-laravel-plain text-[#ff2d20] animate-bounce"></i>
-        <i class="devicon-figma-plain colored animate-pulse"></i>
-        <img src="https://cdn.simpleicons.org/diagramsdotnet/FF9900" alt="Draw.io" class="w-[70px] md:w-[90px] animate-spin-slow" />
-        <i class="devicon-github-original colored animate-bounce"></i>
-      </div>
+    <section id="hero"
+        class="py-20 px-4 md:px-0 bg-gradient-to-b from-[#FFDDDD] to-[#FFFACD] dark:from-[#0f0f0f] dark:to-[#2C3E73] text-[#1a1a1a] dark:text-white transition-colors duration-300">
+        <div class="flex flex-col-reverse md:flex-row items-center gap-12 w-full max-w-7xl mx-auto">
+            <div class="flex-1 text-center md:text-left">
+                <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-800 dark:text-white leading-tight" data-aos="fade-right"
+                    data-aos-duration="1000">
+                    Hi, I'm <span class="text-pink-600 dark:text-sky-400">Faza Haya<br />Laila Anwari</span>
+                </h1>
+                <p class="mt-4 text-lg text-slate-600 dark:text-slate-400" data-aos="fade-right" data-aos-duration="1000"
+                    data-aos-delay="200">
+                    Pelajar PPLG | Web Developer | Creative Thinker ✨
+                </p>
+                <div class="mt-8 flex justify-center md:justify-start gap-4" data-aos="fade-up"
+                    data-aos-duration="1000" data-aos-delay="400">
+                    <a href="#proyek"
+                        class="bg-pink-500 hover:bg-pink-600 text-white dark:bg-sky-600 dark:hover:bg-sky-700 px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-md transition">
+                        <i class="fa-solid fa-flask"></i> Lihat Proyek
+                    </a>
+                    <a href="img/CV_FazaHayaLailaAnwari.pdf" target="_blank" rel="noopener noreferrer"
+                        class="bg-gray-700 hover:bg-gray-800 text-white dark:bg-gray-800 dark:hover:bg-gray-900 px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-md transition">
+                        <i class="fa-solid fa-download"></i> Lihat CV
+                    </a>
+                </div>
+            </div>
+            <div class="flex-1 flex justify-center" data-aos="fade-left" data-aos-duration="1000"
+                data-aos-delay="600">
+                <img src="img/Saya1.png" alt="Foto Faza"
+                    class="w-60 h-auto rounded-full shadow-lg border-4 border-pink-400 dark:border-sky-400" />
+            </div>
+        </div>
     </section>
 
-  <!-- Project Highlights Section -->
-<section id="proyek" class="w-full px-6 md:px-16 pb-20 animate-fadeInUp">
-  <h2 class="text-3xl font-bold mb-10 text-center text-purple-800 dark:text-purple-200">Proyek</h2>
-  <div class="grid md:grid-cols-2 gap-8">
-    <!-- Proyek Card -->
-    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition">
-      <img src="img/BangbaraPOS.jpg" class="rounded-lg mb-4" alt="BangbaraPOS">
-      <h3 class="text-xl font-semibold mb-2">BangbaraPOS</h3>
-      <p class="text-purple-700 dark:text-purple-300 text-sm mb-3">
-        Aplikasi pemesanan makanan untuk Resto Bangbara Steak berbasis Laravel & Tailwind.
-      </p>
-      <a href="bangbarapos.html" class="text-pink-500 dark:text-pink-300 font-medium hover:underline">Lihat Detail →</a>
-    </div>
-
-    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition">
-      <img src="img/G30SCHRONICLE.jpg" class="rounded-lg mb-4" alt="G30SCHRONICLE">
-      <h3 class="text-xl font-semibold mb-2">G30SCHRONICLE</h3>
-      <p class="text-purple-700 dark:text-purple-300 text-sm mb-3">
-        Web edukatif berisi sejarah G30S/PKI lengkap dengan video, kuis, dan fitur AI.
-      </p>
-      <a href="g30schronicle.html" class="text-pink-500 dark:text-pink-300 font-medium hover:underline">Lihat Detail →</a>
-    </div>
-  </div>
-</section>
-
-
-<!--Certificate Section-->
-
-<section class="w-full px-6 md:px-16 pb-20 animate-fadeInUp">
-  <h2 class="text-3xl font-bold mb-10 text-center">Sertifikat</h2>
-  <div class="grid md:grid-cols-2 gap-6">
-    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
-      <h3 class="text-xl font-semibold mb-2">Belajar Dasar Pemrograman Web</h3>
-      <p class="text-purple-700 dark:text-purple-300">Dicoding Indonesia - 2024</p>
-    </div>
-    <!-- Tambahkan lagi sesuai kebutuhan -->
-  </div>
-</section>
-
-
-
-  <!-- Footer Section -->
-<footer id="contact" class="bg-gradient-to-tr from-pink-500 via-purple-600 to-indigo-700 text-white px-8 py-16">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-    
-    <!-- Left Text -->
-    <div>
-      <h2 class="text-3xl font-bold mb-4">Ingin bekerja sama?</h2>
-      <p class="text-lg">Kirimkan saya pesan dan mari kita ciptakan sesuatu yang menakjubkan!</p>
-    </div>
-
-    <!-- Form -->
-    <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 text-gray-800 dark:text-white">
-      <form id="contactForm" class="space-y-5">
-        
-        <!-- Nama -->
-        <div class="relative">
-          <i class="fas fa-user absolute left-3 top-1/2 transform -translate-y-1/2 text-pink-500"></i>
-          <input type="text" id="name" name="name" placeholder="Nama kamu..." required
-            class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400 dark:bg-gray-800" />
+    <section id="about"
+        class="py-16 bg-gradient-to-b from-[#FFFACD] to-[#FFFAE6] dark:from-[#2C3E73] dark:to-[#3D4F91] px-4 md:px-0 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold mb-10 text-center text-gray-800 dark:text-purple-200 z-50"
+                data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                Tentang Saya
+            </h2>
+            <div class="flex flex-col md:flex-row items-start gap-10">
+                <img src="img/Laut.png"
+                    class="w-44 h-56 object-cover rounded-2xl shadow-lg dark:bg-gray-700 transition hover:scale-105 duration-300 mx-auto md:mx-0"
+                    data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200" alt="Foto Pemandangan Laut" />
+                <div class="text-base text-gray-700 dark:text-purple-200 space-y-4">
+                    <ul class="font-medium space-y-1">
+                        <li data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                            <strong>Nama:</strong> Faza Haya Laila Anwari
+                        </li>
+                        <li data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                            <strong>Umur:</strong> 17
+                        </li>
+                        <li data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
+                            <strong>Kota:</strong> Bogor
+                        </li>
+                        <li data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                            <strong>Status:</strong> Pelajar
+                        </li>
+                    </ul>
+                    <p data-aos="fade-up" data-aos-duration="1200" data-aos-delay="700">
+                        Halo! Saya Faza, pelajar jurusan PPLG yang antusias dengan dunia
+                        pengembangan web. Saya percaya setiap baris kode punya potensi
+                        menciptakan perubahan nyata. Saat ini saya aktif mempelajari
+                        front-end dan back-end teknologi untuk memperluas wawasan sebagai
+                        calon software engineer.
+                    </p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li class="flex items-center gap-2 group" data-aos="fade-up" data-aos-duration="1000"
+                            data-aos-delay="800">
+                            <span class="text-xl group-hover:animate-bounce-icon">🎬</span> Suka nonton film & musik
+                            untuk recharge
+                            ide kreatif
+                        </li>
+                        <li class="flex items-center gap-2 group" data-aos="fade-up" data-aos-duration="1000"
+                            data-aos-delay="900">
+                            <span class="text-xl group-hover:animate-spin-slow">❤</span> Tertarik pada teknologi &
+                            ilustrasi digital
+                        </li>
+                        <li class="flex items-center gap-2 group" data-aos="fade-up" data-aos-duration="1000"
+                            data-aos-delay="1000">
+                            <span class="text-xl group-hover:animate-pulse-icon">💡</span> Senang tantangan baru &
+                            tumbuh lewat proses
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- Email -->
-        <div class="relative">
-          <i class="fas fa-envelope absolute left-3 top-1/2 transform -translate-y-1/2 text-pink-500"></i>
-          <input type="email" id="email" name="email" placeholder="Email kamu..." required
-            class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400 dark:bg-gray-800" />
+    <section id="skill"
+        class="bg-gradient-to-b from-[#FFFAE6] to-[#FFE0E0] dark:from-[#3D4F91] dark:to-[#4B5DA6] py-16">
+        <h2 class="text-3xl font-bold mb-10 text-center text-gray-800 dark:text-purple-200" data-aos="fade-up"
+            data-aos-duration="1000">Keahlian Saya</h2>
+        <div
+            class="flex flex-wrap justify-center gap-12 text-purple-700 dark:text-purple-300 text-[70px] md:text-[90px]">
+            </div>
+
+        <div class="slider-container mx-auto">
+            <div class="slider-track">
+                <div class="slide">
+                    <img src="img/html.png" alt="HTML" class="logo" />
+                </div>
+                <div class="slide">
+                    <img src="img/css.png" alt="CSS" class="logo" />
+                </div>
+                <div class="slide">
+                    <img src="img/js.png" alt="JS" class="logo" />
+                </div>
+                <div class="slide">
+                    <img src="img/php.png" alt="PHP" class="logo" />
+                </div>
+                <div class="slide">
+                    <img src="img/github.png" alt="Github" class="logo" />
+                </div>
+                <div class="slide">
+                    <img src="img/figma.png" alt="Figma" class="logo" />
+                </div>
+                <div class="slide">
+                    <img src="img/html.png" alt="HTML" class="logo" />
+                </div>
+                <div class="slide">
+                    <img src="img/css.png" alt="CSS" class="logo" />
+                </div>
+                <div class="slide">
+                    <img src="img/js.png" alt="JS" class="logo" />
+                </div>
+                <div class="slide">
+                    <img src="img/php.png" alt="PHP" class="logo" />
+                </div>
+                <div class="slide">
+                    <img src="img/github.png" alt="Github" class="logo" />
+                </div>
+                <div class="slide">
+                    <img src="img/figma.png" alt="Figma" class="logo" />
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- Subject -->
-        <div class="relative">
-          <i class="fas fa-tag absolute left-3 top-1/2 transform -translate-y-1/2 text-pink-500"></i>
-          <input type="text" id="subject" name="subject" placeholder="Subject" required
-            class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400 dark:bg-gray-800" />
+    <section id="proyek"
+        class="bg-gradient-to-b from-[#FFE0E0] to-[#FFD0D0] dark:from-[#4B5DA6] dark:to-[#5E6FC0] py-16">
+        <h2 class="text-3xl font-bold mb-10 text-center text-gray-800 dark:text-purple-200" data-aos="fade-up"
+            data-aos-duration="1000">
+            Proyek Saya
+        </h2>
+        <div class="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto px-4 md:px-0">
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 hover:shadow-xl transition"
+                data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                <img src="img/BangbaraPOS.jpg" class="rounded-lg mb-2" alt="BangbaraPOS" />
+                <h3 class="text-lg font-semibold mb-1">BangbaraPOS</h3>
+                <p class="text-purple-700 dark:text-purple-300 text-sm mb-2">
+                    Aplikasi pemesanan makanan untuk Resto Bangbara Steak berbasis
+                    Laravel & Tailwind.
+                </p>
+                <a href="bangbarapos.html"
+                    class="text-pink-500 dark:text-pink-300 font-medium hover:underline text-sm">Lihat
+                    Detail →</a>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 hover:shadow-xl transition"
+                data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                <img src="img/G30SCHRONICLE.jpg" class="rounded-lg mb-2" alt="G30SCHRONICLE" />
+                <h3 class="text-lg font-semibold mb-1">G30SCHRONICLE</h3>
+                <p class="text-purple-700 dark:text-purple-300 text-sm mb-2">
+                    Web edukatif berisi sejarah G30S/PKI lengkap dengan video, kuis, dan
+                    fitur AI.
+                </p>
+                <a href="g30schronicle.html"
+                    class="text-pink-500 dark:text-pink-300 font-medium hover:underline text-sm">Lihat
+                    Detail →</a>
+            </div>
         </div>
+    </section>
 
-        <!-- Message -->
-        <div class="relative">
-          <i class="fas fa-comment-dots absolute left-3 top-5 text-pink-500"></i>
-          <textarea id="message" name="message" placeholder="Pesan mu..." rows="5" required
-            class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400 dark:bg-gray-800"></textarea>
+    <section id="certificate"
+        class="bg-gradient-to-b from-[#FFD0D0] to-[#FFE8CC] dark:from-[#5E6FC0] dark:to-[#6F80D0] py-16">
+        <h2 class="text-3xl font-bold mb-10 text-center text-gray-800 dark:text-purple-200" data-aos="fade-up"
+            data-aos-duration="1000">
+            Sertifikat
+        </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-4 md:px-0">
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 hover:shadow-xl transition"
+                data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                <img src="img/certif/Memulai dasar pemrograman.png" class="rounded-lg mb-2" alt="Sertifikat 1" />
+                <h3 class="text-lg font-semibold mb-1">Memulai Dasar Pemrograman</h3>
+                <p class="text-purple-700 dark:text-purple-300 text-sm mb-2">
+                    Sertifikat kelulusan Dicoding - 2025
+                </p>
+                <a href="#" class="text-pink-500 dark:text-pink-300 font-medium hover:underline text-sm">Lihat
+                    Sertifikat →</a>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 hover:shadow-xl transition"
+                data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                <img src="img/certif/Pengenalan ke logika.png" class="rounded-lg mb-2" alt="Sertifikat 2" />
+                <h3 class="text-lg font-semibold mb-1">Pengenalan ke Logika Pemrograman</h3>
+                <p class="text-purple-700 dark:text-purple-300 text-sm mb-2">
+                    Sertifikat kelulusan Dicoding - 2025
+                </p>
+                <a href="#" class="text-pink-500 dark:text-pink-300 font-medium hover:underline text-sm">Lihat
+                    Sertifikat →</a>
+            </div>
         </div>
+    </section>
 
-        <!-- Submit -->
-        <button type="submit" class="submit-btn w-full py-3 rounded-xl bg-pink-500 hover:bg-pink-600 text-white font-semibold transition">
-          <i class="fas fa-paper-plane mr-2"></i> Kirim Pesan
-        </button>
-      </form>
-    </div>
-  </div>
-</footer>
+    <footer id="contact"
+        class="py-16 min-h-screen flex items-center justify-center bg-gradient-to-b from-[#FFE8CC] to-[#FFF0E0] dark:from-[#6F80D0] dark:to-[#8E9DD5]">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center px-4 md:px-0">
+            <div>
+                <h2 class="text-3xl font-bold mb-4 text-gray-800 dark:text-purple-100" data-aos="fade-right"
+                    data-aos-duration="1000">Ingin bekerja sama?</h2>
+                <p class="text-lg text-gray-700 dark:text-purple-200" data-aos="fade-right"
+                    data-aos-duration="1000" data-aos-delay="200">
+                    Kirimkan saya pesan dan mari kita ciptakan sesuatu yang menakjubkan!
+                </p>
+            </div>
+
+            <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 text-gray-800 dark:text-white"
+                data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">
+                <form id="contact-form" class="space-y-5">
+                    <div class="relative">
+                        <i class="fas fa-user absolute left-3 top-1/2 transform -translate-y-1/2 text-pink-500"></i>
+                        <input type="text" name="name" placeholder="Nama kamu..." required
+                            class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400 dark:bg-gray-800" />
+                    </div>
+
+                    <div class="relative">
+                        <i class="fas fa-envelope absolute left-3 top-1/2 transform -translate-y-1/2 text-pink-500"></i>
+                        <input type="email" name="email" placeholder="Email kamu..." required
+                            class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400 dark:bg-gray-800" />
+                    </div>
+
+                    <div class="relative">
+                        <i class="fas fa-comment-dots absolute left-3 top-5 text-pink-500"></i>
+                        <textarea name="message" placeholder="Pesan mu..." rows="5" required
+                            class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400 dark:bg-gray-800"></textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="submit-btn w-full py-3 rounded-xl bg-pink-500 hover:bg-pink-600 text-white font-semibold transition">
+                        <i class="fas fa-paper-plane mr-2"></i> Kirim Pesan
+                    </button>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
+
+        // Toggle Mobile Menu
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (menuToggle && mobileMenu) { // Pastikan elemen ada
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuToggle.classList.toggle('open');
+            });
+        }
+
+        // Dark Mode Toggle Logic
+        // Menggunakan dua ID terpisah untuk tombol (desktop dan mobile)
+        const modeToggleDesktop = document.getElementById('modeToggleDesktop');
+        const modeToggleMobile = document.getElementById('modeToggleMobile');
+
+        function updateModeToggleButtonText(isDarkMode) {
+            const text = isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
+            if (modeToggleDesktop) {
+                modeToggleDesktop.innerHTML = text;
+            }
+            if (modeToggleMobile) {
+                modeToggleMobile.innerHTML = text;
+            }
+        }
+
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const isDarkMode = document.documentElement.classList.contains('dark');
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            updateModeToggleButtonText(isDarkMode);
+        }
+
+        // Event listener untuk tombol desktop
+        if (modeToggleDesktop) {
+            modeToggleDesktop.addEventListener('click', toggleDarkMode);
+        }
+
+        // Event listener untuk tombol mobile
+        if (modeToggleMobile) {
+            modeToggleMobile.addEventListener('click', toggleDarkMode);
+        }
+
+        // Inisialisasi Dark Mode saat halaman dimuat
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            document.documentElement.classList.add('dark');
+            updateModeToggleButtonText(true);
+        } else {
+            document.documentElement.classList.remove('dark');
+            updateModeToggleButtonText(false);
+        }
 
 
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script src="script.js"></script>
+        // Close mobile menu and reset icon on resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) { // Sesuai breakpoint md Tailwind CSS
+                mobileMenu.classList.add('hidden');
+                menuToggle.classList.remove('open');
+            }
+        });
+
+        // EmailJS Integration
+        // Ganti dengan User ID, Service ID, dan Template ID EmailJS Anda
+        // Daftar di https://www.emailjs.com/ untuk mendapatkan ID ini
+        const EMAILJS_USER_ID = "YOUR_EMAILJS_USER_ID"; // Ganti ini
+        const EMAILJS_SERVICE_ID = "YOUR_EMAILJS_SERVICE_ID"; // Ganti ini
+        const EMAILJS_TEMPLATE_ID = "YOUR_EMAILJS_TEMPLATE_ID"; // Ganti ini
+
+        if (EMAILJS_USER_ID && EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID) {
+            emailjs.init(EMAILJS_USER_ID);
+
+            document.getElementById('contact-form').addEventListener('submit', function (event) {
+                event.preventDefault(); // Mencegah form dari reload halaman
+
+                emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this)
+                    .then(() => {
+                        alert('Pesan Anda berhasil terkirim!');
+                        this.reset(); // Reset form setelah sukses
+                    }, (error) => {
+                        alert('Gagal mengirim pesan. Silakan coba lagi nanti.');
+                        console.error('EmailJS Error:', error);
+                    });
+            });
+        } else {
+            console.warn("EmailJS IDs not configured. Contact form will not send emails.");
+            // Nonaktifkan tombol submit atau tampilkan pesan jika ID tidak diatur
+            const submitBtn = document.querySelector('#contact-form .submit-btn');
+            if(submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Form tidak aktif (konfigurasi EmailJS)';
+            }
+        }
+    </script>
 </body>
+
 </html>
